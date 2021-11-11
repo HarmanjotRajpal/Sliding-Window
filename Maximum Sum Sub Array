@@ -1,0 +1,25 @@
+example = [-2,-3,-4,-5]
+example1 = [-1,2,3,1]
+
+def maxSumSubArray(example):
+    maxSum = -99999;
+    startIndex = 0;
+    endIndex = startIndex + 1;
+    
+    if len(example) < 2:
+        return 'invalid'
+    
+    while startIndex < len(example) -1:
+        currentSum = example[startIndex] + example[endIndex]
+        if currentSum > maxSum:
+            maxSum = currentSum
+            maxSumStartIndex = startIndex
+            maxSumEndIndex = endIndex
+    
+        startIndex = startIndex+1 
+        endIndex = startIndex+1
+        
+    return [maxSum, example[maxSumStartIndex], example[maxSumEndIndex]]
+    
+result = maxSumSubArray(example)
+print (result)
