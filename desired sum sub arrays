@@ -1,0 +1,32 @@
+example = [2,7,1,1,1,1,1,1]
+
+def findAllSubArraysWithDesiredSum(example, desiredSum):
+    resultantArray = []
+    left = 0
+    right = 0
+    
+    if len(example) < 1:
+        return "invalid"
+    
+    while left < len(example) and right < len(example):
+        tempArray = []
+        currentSum = 0
+        
+        for j in range(left, right+1):
+            currentSum = currentSum + example[j]
+            tempArray.append(example[j])
+        
+        if (currentSum < desiredSum):
+            right = right + 1
+            
+        if (currentSum > desiredSum):
+            left = left + 1 
+            
+        if (currentSum == desiredSum):
+            right = right + 1
+            resultantArray.append(tempArray)
+            
+    return resultantArray
+    
+result = findAllSubArraysWithDesiredSum(example, 7)
+print (result)
