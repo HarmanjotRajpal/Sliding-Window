@@ -1,0 +1,24 @@
+// this is brute force
+
+import copy;
+example = [-1,-4, 0, 5, 3, 2, 1]
+
+def subArraysAtAnIndex(example):
+    if len(example) < 1 :
+        return " invalid"
+    
+    dic = {}
+    for i in range(len(example)):
+        if len(dic) == 0:
+            dic[i] = [[example[i]]];
+        else:
+            dic[i] = [[example[i]]]
+            previousSubArray = dic[i-1]
+            for item in previousSubArray:
+                temp = copy.copy(item)
+                temp.append(example[i])
+                dic[i].append(temp)
+    return dic 
+
+result = subArraysAtAnIndex(example)
+print (result)
